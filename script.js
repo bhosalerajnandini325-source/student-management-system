@@ -1,0 +1,5 @@
+const form=document.getElementById("studentForm"),list=document.getElementById("studentList"),search=document.getElementById("search");
+let students=JSON.parse(localStorage.getItem("students")||"[]");
+function render(){const q=search.value.toLowerCase();list.innerHTML=students.filter(s=>(s.name+s.course+s.email).toLowerCase().includes(q)).map((s,i)=>`<tr><td>${s.name}</td><td>${s.course}</td><td>${s.email}</td><td><button class="delete" onclick="removeStudent(${i})">Delete</button></td></tr>`).join("")}
+form.onsubmit=e=>{e.preventDefault();students.push({name:name.value.trim(),course:course.value.trim(),email:email.value.trim()});localStorage.setItem("students",JSON.stringify(students));form.reset();render()};
+function removeStudent(i){students.splice(i,1);localStorage.setItem("students",JSON.stringify(students));render()} search.oninput=render; render();
