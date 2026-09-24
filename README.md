@@ -1,4 +1,4 @@
-# Student Management System
+# To-Do Task Manager
 
 A ready-to-run responsive mini project built with HTML, CSS and JavaScript.
 
